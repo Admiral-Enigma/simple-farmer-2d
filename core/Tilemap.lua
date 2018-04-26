@@ -11,6 +11,35 @@ function Tilemap:new(tile_width, tile_height, tiles_rows, tiles_collums, tilemap
   return ins
 end
 
+function Tilemap:returnTileAtCollumRow(collum, row)
+    if self:isInsideMap(collum, row) then
+      local index = self:_row_collum_to_array_index(collum, row)
+      return self._tile_data[index]
+    end
+end
+
+function Tilemap:getTileAtPoint(x, y)
+  local pointCollum = love.math.floor(x / self._tile_collums)
+  local pointRow = love.math.floor(y / self._tile_rows)
+  local index = self:_row_collum_to_array_index(pointCollum, pointRow)
+  if self:isInsideMap(pointCollum, pointRow) then
+    return self._tile_data[index]
+  else
+    return nil
+  end
+end
+
+function Tilemap:_row_collum_to_array_index (collum, row)
+  return collum + self._tile_collums * row
+end
+
+function Tilemap:isInsideMap(collum, row)
+  if collum >= 0 and collum < self._tile_collums and row >= 0 and row < self._tile_rows then
+    return true
+  else
+    return false
+  end
+end
 
 function Tilemap:draw()
   index = 1
