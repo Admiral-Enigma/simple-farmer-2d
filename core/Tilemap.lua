@@ -52,6 +52,9 @@ function Tilemap:draw()
       if tileID == 0 then
         love.graphics.setColor(47,129,54)
         love.graphics.rectangle("fill", tile_draw_x, tile_draw_y, self._tile_width, self._tile_height)
+      elseif tileID == 1 then
+        love.graphics.setColor(47,159,54)
+        love.graphics.rectangle("fill", tile_draw_x, tile_draw_y, self._tile_width, self._tile_height)
       else
         love.graphics.setColor(240,147,43)
         love.graphics.rectangle("fill", tile_draw_x, tile_draw_y, self._tile_width, self._tile_height)

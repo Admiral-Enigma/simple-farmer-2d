@@ -3,18 +3,11 @@ local Tilemap = require "core.Tilemap"
 local Picker = require "game.Picker"
 
 function love.load(arg)
-  map = Tilemap:new(32, 32, 10, 10, {
-    0,0,0,0,0,0,0,0,0,0,
-    0,1,1,1,1,1,1,1,1,0,
-    0,1,1,1,1,1,1,1,1,0,
-    0,1,1,1,1,1,1,1,1,0,
-    0,1,1,1,1,1,1,1,1,0,
-    0,1,1,1,1,1,1,1,1,0,
-    0,1,1,1,1,1,1,1,1,0,
-    0,1,1,1,1,1,1,1,1,0,
-    0,1,1,1,1,1,1,1,1,0,
-    0,0,0,0,0,0,0,0,0,0,
-  })
+  love.keyboard.setKeyRepeat(0.1, 0.5)
+  mapData = require "res.TestMap"
+  map = Tilemap:new(32, 32, 100, 100, mapData)
+
+
   picker = Picker:new(map)
 end
 
