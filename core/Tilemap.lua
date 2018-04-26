@@ -50,10 +50,10 @@ function Tilemap:draw()
     for collum=1,self._tile_collums do
       local tileID = self._tile_data[index]
       if tileID == 0 then
-        love.graphics.setColor(0,0,255)
+        love.graphics.setColor(47,129,54)
         love.graphics.rectangle("fill", tile_draw_x, tile_draw_y, self._tile_width, self._tile_height)
       else
-        love.graphics.setColor(255,0,0)
+        love.graphics.setColor(240,147,43)
         love.graphics.rectangle("fill", tile_draw_x, tile_draw_y, self._tile_width, self._tile_height)
       end
 
@@ -63,6 +63,19 @@ function Tilemap:draw()
     tile_draw_y = tile_draw_y + self._tile_height
     tile_draw_x = 0
   end
+end
+
+function Tilemap:getColumns ()
+  return self._tile_collums
+end
+function Tilemap:getRows ()
+  return self._tile_rows
+end
+function Tilemap:getTileWidth ()
+  return self._tile_width
+end
+function Tilemap:getTileHeight ()
+  return self._tile_height
 end
 
 return Tilemap

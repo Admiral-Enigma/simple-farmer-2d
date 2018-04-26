@@ -16,8 +16,8 @@ function Picker:update(dt)
 end
 
 function Picker:draw ()
-  local collum = math.floor(self._x / 32)
-  local row = math.floor(self._y / 32)
+  local collum = math.floor(self._x / self._tilemap:getTileWidth())
+  local row = math.floor(self._y / self._tilemap:getTileHeight())
   drawOutlineTile(collum, row, 32, 32)
 
 end
