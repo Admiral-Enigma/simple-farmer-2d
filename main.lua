@@ -26,3 +26,10 @@ function love.draw()
   map:draw()
   picker:draw()
 end
+
+function love.keypressed(key, scancode, isrepeat)
+  picker:keypressed(key, scancode, isrepeat)
+  if key == "q" then
+    love.event.quit()
+  end
+end
