@@ -13,7 +13,6 @@ function Picker:new(tilemap)
 end
 
 function Picker:update(dt)
-
 end
 
 function Picker:keypressed(key, scancode, isrepeat)
@@ -53,6 +52,14 @@ end
 
 function Picker:_getCurrentCollumn ()
   return math.floor(self._x / self._tilemap:getTileWidth())
+end
+
+function Picker:getX ()
+  return self._x
+end
+
+function Picker:getY ()
+  return self._y
 end
 
 return Picker
