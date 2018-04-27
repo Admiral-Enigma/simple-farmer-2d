@@ -38,6 +38,10 @@ function Picker:keypressed(key, scancode, isrepeat)
       print(math.floor((self._x - 32) / self._tilemap:getTileWidth()))
     end
   end
+
+  if key == "z" then
+    self._tilemap:changeTile(2, self:_getCurrentCollumn(), self:_getCurrentRow())
+  end
 end
 
 function Picker:draw ()

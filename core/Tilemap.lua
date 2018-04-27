@@ -1,40 +1,44 @@
 local Tilemap = {}
 Tilemap.__index = Tilemap
 
-function Tilemap:new(tile_width, tile_height, tiles_rows, tiles_collums, tilemap_data)
+function Tilemap:new(tile_width, tile_height, tiles_rows, tiles_collumns, tilemap_data)
   local ins = setmetatable({}, self)
   ins._tile_width = tile_width or 0
   ins._tile_height = tile_height or 0
-  ins._tile_collums = tiles_collums or 0
+  ins._tile_collumns = tiles_collumns or 0
   ins._tile_rows = tiles_rows or 0
   ins._tile_data = tilemap_data or {}
   return ins
 end
 
-function Tilemap:returnTileAtCollumRow(collum, row)
-    if self:isInsideMap(collum, row) then
-      local index = self:_row_collum_to_array_index(collum, row)
+function Tilemap:returnTileAtcollumnRow(collumn, row)
+    if self:isInsideMap(collumn, row) then
+      local index = self:_row_collumn_to_array_index(collumn, row)
       return self._tile_data[index]
     end
 end
 
 function Tilemap:getTileAtPoint(x, y)
-  local pointCollum = love.math.floor(x / self._tile_collums)
+  local pointcollumn = love.math.floor(x / self._tile_collumns)
   local pointRow = love.math.floor(y / self._tile_rows)
-  local index = self:_row_collum_to_array_index(pointCollum, pointRow)
-  if self:isInsideMap(pointCollum, pointRow) then
+  local index = self:_row_collumn_to_array_index(pointcollumn, pointRow)
+  if self:isInsideMap(pointcollumn, pointRow) then
     return self._tile_data[index]
   else
     return nil
   end
 end
 
-function Tilemap:_row_collum_to_array_index (collum, row)
-  return collum + self._tile_collums * row
+function Tilemap:_row_collumn_to_array_index (collumn, row)
+  if self:isInsideMap(collumn, row) then
+    return collumn + self._tile_collumns * row
+  else
+    return false
+  end
 end
 
-function Tilemap:isInsideMap(collum, row)
-  if collum >= 0 and collum < self._tile_collums and row >= 0 and row < self._tile_rows then
+function Tilemap:isInsideMap(collumn, row)
+  if collumn >= 0 and collumn < self._tile_collumns and row >= 0 and row < self._tile_rows then
     return true
   else
     return false
@@ -47,7 +51,7 @@ function Tilemap:draw()
   tile_draw_y = 0
 
   for row=1,self._tile_rows do
-    for collum=1,self._tile_collums do
+    for collumn=1,self._tile_collumns do
       local tileID = self._tile_data[index]
       if tileID == 0 then
         love.graphics.setColor(47,129,54)
@@ -55,7 +59,7 @@ function Tilemap:draw()
       elseif tileID == 1 then
         love.graphics.setColor(47,159,54)
         love.graphics.rectangle("fill", tile_draw_x, tile_draw_y, self._tile_width, self._tile_height)
-      else
+      elseif tileID == 2 then
         love.graphics.setColor(240,147,43)
         love.graphics.rectangle("fill", tile_draw_x, tile_draw_y, self._tile_width, self._tile_height)
       end
@@ -68,8 +72,14 @@ function Tilemap:draw()
   end
 end
 
+function Tilemap:changeTile (id, collumnn, row)
+  -- MAGIC NUMBERS WHoooo
+  local index = self:_row_collumn_to_array_index(collumnn + 1, row)
+  self._tile_data[index] = id
+end
+
 function Tilemap:getColumns ()
-  return self._tile_collums
+  return self._tile_collumns
 end
 function Tilemap:getRows ()
   return self._tile_rows

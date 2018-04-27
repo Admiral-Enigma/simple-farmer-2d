@@ -9,13 +9,13 @@ function love.load(arg)
   map = Tilemap:new(32, 32, 100, 100, mapData)
   picker = Picker:new(map)
 
-  camera = Camera.new(picker:getX(), picker:getY(), 2)
+  camera = Camera.new(picker:getX(), picker:getY(), 1)
 
 end
 
 function love.update(dt)
   picker:update(dt)
-  camera:lookAt(picker:getX() + 16, picker:getY() + 16)
+  camera:lookAt(picker:getX(), picker:getY())
 end
 
 function love.draw()
