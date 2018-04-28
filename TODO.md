@@ -1,4 +1,7 @@
-
+# Picker
+- Add option to select between different tools (hoe, shovel, sickle,seeds)
+- Have a icon in the bottom right corner showing what tool you have selected
+- When selecting a seed type a window pops up with the different seed types and how many you have of each
 
 # Crops
 - Add a crop manager
