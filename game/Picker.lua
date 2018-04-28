@@ -1,6 +1,7 @@
 local Picker = {}
 Picker.__index = Picker
 local name = require "..utils.TileTools"
+
 function Picker:new(tilemap)
   local ins = setmetatable({}, self)
   self._x = 0
@@ -39,7 +40,7 @@ function Picker:keypressed(key, scancode, isrepeat)
     end
   end
 
-  if key == "z" then
+  if key == "f" then
     self._tilemap:changeTile(2, self:_getCurrentCollumn(), self:_getCurrentRow())
   end
 end
@@ -47,7 +48,7 @@ end
 function Picker:draw ()
   local collum = math.floor(self._x / self._tilemap:getTileWidth())
   local row = math.floor(self._y / self._tilemap:getTileHeight())
-  drawOutlineTile(collum, row, 32, 32)
+  drawOutlineTile(collum, row, self._tilemap:getTileWidth(), self._tilemap:getTileHeight())
 end
 
 function Picker:_getCurrentRow ()
