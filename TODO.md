@@ -14,3 +14,6 @@
 # Selling and buying crops
 ### Ideas
 - Simple keyboard controlled shop for seeds
+
+# Bugs
+- Wierd error with the collumns

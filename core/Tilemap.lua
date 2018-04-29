@@ -19,8 +19,8 @@ function Tilemap:returnTileAtcollumnRow(collumn, row)
 end
 
 function Tilemap:getTileAtPoint(x, y)
-  local pointcollumn = love.math.floor(x / self._tile_collumns)
-  local pointRow = love.math.floor(y / self._tile_rows)
+  local pointcollumn = math.floor(x / self._tile_collumns)
+  local pointRow = math.floor(y / self._tile_rows)
   local index = self:_row_collumn_to_array_index(pointcollumn, pointRow)
   if self:isInsideMap(pointcollumn, pointRow) then
     return self._tile_data[index]
@@ -74,7 +74,7 @@ end
 
 function Tilemap:changeTile (id, collumnn, row)
   -- MAGIC NUMBERS WHoooo
-  local index = self:_row_collumn_to_array_index(collumnn + 1, row)
+  local index = self:_row_collumn_to_array_index(collumnn, row)
   self._tile_data[index] = id
 end
 

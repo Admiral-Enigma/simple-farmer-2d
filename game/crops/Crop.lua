@@ -34,7 +34,7 @@ end
 function Crop:draw ()
   -- Reset color
   love.graphics.setColor(255,255,255,255)
-  love.graphics.draw(self._frames[self._frameToDraw], self._x, self._y)
+  love.graphics.draw(self._frames[self._frameToDraw], self._x, self._y, 0, Scale.x, Scale.y)
 end
 
 return Crop

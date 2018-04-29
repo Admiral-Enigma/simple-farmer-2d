@@ -2,6 +2,7 @@ local Tilemap = require "core.Tilemap"
 local Picker = require "game.Picker"
 local Hud = require "game.ui.hud"
 local Crop = require "game.crops.Crop"
+Scale = require "scale"
 Camera = require "core.lib.hump.camera"
 
 
@@ -13,7 +14,7 @@ function love.load(arg)
   mapData = require "res.TestMap"
   map = Tilemap:new(32, 32, 100, 100, mapData)
 
-  testCrop = Crop:new("Fisksild", 32, 32, 10, Assets.wheat)
+  testCrop = Crop:new("Fisksild", 64, 64, 10, Assets.wheat)
   picker = Picker:new(map)
   hud = Hud:new(picker)
   camera = Camera.new(picker:getX(), picker:getY(), 1)

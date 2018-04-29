@@ -23,7 +23,7 @@ function Picker:keypressed(key, scancode, isrepeat)
     end
   end
   if key == "s" then
-    if self._tilemap:isInsideMap(math.floor((self._y + self._tileheight )/ self._tilemap:getTileHeight()), self:_getCurrentRow()) then
+    if self._tilemap:isInsideMap(math.floor((self._y + self._tileheight ) / self._tilemap:getTileHeight()), self:_getCurrentRow()) then
       self._y = self._y + self._tileheight
     end
   end
