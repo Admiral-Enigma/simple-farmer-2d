@@ -62,9 +62,7 @@ function Picker:keypressed(key, scancode, isrepeat)
 end
 
 function Picker:draw ()
-  local collum = math.floor(self._x / self._tilemap:getTileWidth())
-  local row = math.floor(self._y / self._tilemap:getTileHeight())
-  drawOutlineTile(collum, row, self._tilemap:getTileWidth(), self._tilemap:getTileHeight())
+  drawOutlineTile(self:_getCurrentCollumn(), self:_getCurrentRow(), self._tilemap:getTileWidth(), self._tilemap:getTileHeight())
 end
 
 function Picker:_getCurrentRow ()
