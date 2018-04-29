@@ -9,7 +9,7 @@ function Picker:new(tilemap)
   self._tilemap = tilemap
   self._tilewidth = tilemap:getTileWidth()
   self._tileheight = tilemap:getTileHeight()
-
+  self._currentTool = 1
   return ins
 end
 
@@ -20,7 +20,6 @@ function Picker:keypressed(key, scancode, isrepeat)
   if key == "w" then
     if self._tilemap:isInsideMap(math.floor((self._y - self._tileheight) / self._tilemap:getTileHeight()), self:_getCurrentRow()) then
       self._y = self._y - self._tileheight
-      print(math.floor((self._y - 32) / self._tilemap:getTileHeight()))
     end
   end
   if key == "s" then
@@ -36,7 +35,24 @@ function Picker:keypressed(key, scancode, isrepeat)
   if key == "d" then
     if self._tilemap:isInsideMap(self:_getCurrentCollumn(), math.floor((self._x + self._tilewidth) / self._tilemap:getTileWidth())) then
       self._x = self._x + self._tilewidth
-      print(math.floor((self._x - 32) / self._tilemap:getTileWidth()))
+    end
+  end
+  --[[]
+  1 hoe,
+  2 shovel,
+  3 sickle,
+  4 seed
+  ]]--
+
+  if key == "1" then
+    if self._currentTool > 1 then
+      self._currentTool = self._currentTool - 1
+    end
+  end
+
+  if key == "3" then
+    if self._currentTool < 4 then
+      self._currentTool = self._currentTool + 1
     end
   end
 
@@ -65,6 +81,10 @@ end
 
 function Picker:getY ()
   return self._y
+end
+
+function Picker:getCurrentTool ()
+  return self._currentTool
 end
 
 return Picker
