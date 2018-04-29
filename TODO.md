@@ -16,4 +16,4 @@
 - Simple keyboard controlled shop for seeds
 
 # Bugs
-- Wierd error with the collumns
+- Wierd error with the collumns - Fixed (found out I accidentally declared the index variable as 1)

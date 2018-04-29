@@ -33,7 +33,7 @@ function Tilemap:_row_collumn_to_array_index (collumn, row)
   if self:isInsideMap(collumn, row) then
     return collumn + self._tile_collumns * row
   else
-    return false
+    return 0
   end
 end
 
@@ -46,7 +46,7 @@ function Tilemap:isInsideMap(collumn, row)
 end
 
 function Tilemap:draw()
-  index = 1
+  index = 0
   tile_draw_x = 0
   tile_draw_y = 0
 
@@ -72,10 +72,11 @@ function Tilemap:draw()
   end
 end
 
-function Tilemap:changeTile (id, collumnn, row)
-  -- MAGIC NUMBERS WHoooo
-  local index = self:_row_collumn_to_array_index(collumnn, row)
-  self._tile_data[index] = id
+function Tilemap:changeTile (id, collumn, row)
+  if self:isInsideMap(collumn, row) then
+    local index = self:_row_collumn_to_array_index(collumn, row)
+    self._tile_data[index] = id
+  end
 end
 
 function Tilemap:getColumns ()
