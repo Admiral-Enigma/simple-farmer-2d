@@ -4,13 +4,13 @@ local name = require "..utils.TileTools"
 
 function Picker:new(tilemap, cropmanager)
   local ins = setmetatable({}, self)
-  self._x = 0
-  self._y = 0
-  self._tilemap = tilemap
-  self._tilewidth = tilemap:getTileWidth()
-  self._tileheight = tilemap:getTileHeight()
-  self._cropmanager = cropmanager or {}
-  self._currentTool = 1
+  ins._x = 0
+  ins._y = 0
+  ins._tilemap = tilemap
+  ins._tilewidth = tilemap:getTileWidth()
+  ins._tileheight = tilemap:getTileHeight()
+  ins._cropmanager = cropmanager or {}
+  ins._currentTool = 1
   return ins
 end
 

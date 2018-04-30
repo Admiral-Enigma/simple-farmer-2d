@@ -3,8 +3,8 @@ Hud.__index = Hud
 
 function Hud:new(picker)
   local ins = setmetatable({}, self)
-  self._picker = picker or {}
-  self._font = love.graphics.newFont(30)
+  ins._picker = picker or {}
+  ins._font = love.graphics.newFont(30)
   return ins
 end
 

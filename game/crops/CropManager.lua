@@ -4,8 +4,8 @@ local index = 1
 
 function CropManager:new(tilemap)
   local ins = setmetatable({}, self)
-  self._crops = {}
-  self._tilemap = tilemap or {}
+  ins._crops = {}
+  ins._tilemap = tilemap or {}
   return ins
 end
 
@@ -24,10 +24,9 @@ function CropManager:update (dt)
 end
 
 function CropManager:draw ()
-  for i = 1, #self._crops do
-    self._crops[i]:draw()
+  for k,v in ipairs(self._crops) do
+    v:draw()
   end
-  
 end
 
 

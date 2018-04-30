@@ -46,9 +46,9 @@ function Tilemap:isInsideMap(collumn, row)
 end
 
 function Tilemap:draw()
-  index = 0
-  tile_draw_x = 0
-  tile_draw_y = 0
+  local index = 0
+  local tile_draw_x = 0
+  local tile_draw_y = 0
 
   for row=1,self._tile_rows do
     for collumn=1,self._tile_collumns do

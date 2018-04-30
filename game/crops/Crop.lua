@@ -3,13 +3,13 @@ Crop.__index = Crop
 
 function Crop:new(name, x, y, growthTime, images)
   local ins = setmetatable({}, self)
-  self._name = name or "Æbleskiver"
-  self._x = x or 0
-  self._y = y or 0
-  self._growthTime = growthTime or 1
-  self._frames = images or {}
-  self._frameToDraw = math.ceil(#self._frames / self._growthTime)
-  self._harvestable = false
+  ins._name = name or "Æbleskiver"
+  ins._x = x or 0
+  ins._y = y or 0
+  ins._growthTime = growthTime or 1
+  ins._frames = images or {}
+  ins._frameToDraw = math.ceil(#ins._frames / ins._growthTime)
+  ins._harvestable = false
   return ins
 end
 

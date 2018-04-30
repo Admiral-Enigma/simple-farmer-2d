@@ -16,5 +16,5 @@
 - Simple keyboard controlled shop for seeds
 
 # Bugs
-- Wierd error with the collumns - Fixed (found out I accidentally declared the index variable as 1)
-- CropManager only draws one crop
+- Wierd error with the collumns - Fixed (Found out I accidentally declared the index variable as 1)
+- CropManager only draws one crop - Fixed (The Crop class and a few others were wrong)
