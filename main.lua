@@ -3,7 +3,7 @@ local Picker = require "game.Picker"
 local Hud = require "game.ui.hud"
 Crop = require "game.crops.Crop"
 CropManager = require "game.crops.CropManager"
-Scale = require "scale"
+Globals = require "globals"
 Camera = require "core.lib.hump.camera"
 
 
