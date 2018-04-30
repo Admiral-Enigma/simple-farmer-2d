@@ -2,13 +2,14 @@ local Picker = {}
 Picker.__index = Picker
 local name = require "..utils.TileTools"
 
-function Picker:new(tilemap)
+function Picker:new(tilemap, cropmanager)
   local ins = setmetatable({}, self)
   self._x = 0
   self._y = 0
   self._tilemap = tilemap
   self._tilewidth = tilemap:getTileWidth()
   self._tileheight = tilemap:getTileHeight()
+  self._cropmanager = cropmanager or {}
   self._currentTool = 1
   return ins
 end
@@ -57,7 +58,10 @@ function Picker:keypressed(key, scancode, isrepeat)
   end
 
   if key == "f" then
-    self._tilemap:changeTile(2, self:_getCurrentCollumn(), self:_getCurrentRow())
+    --self._tilemap:changeTile(2, self:_getCurrentCollumn(), self:_getCurrentRow())
+    local crop = {name = "Fisksild", growthTime = 10, images = Assets.wheat}
+    self._cropmanager:createCrop(self:_getCurrentCollumn(), self:_getCurrentRow(), crop)
+
   end
 end
 

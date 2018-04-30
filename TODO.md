@@ -17,3 +17,4 @@
 
 # Bugs
 - Wierd error with the collumns - Fixed (found out I accidentally declared the index variable as 1)
+- CropManager only draws one crop

@@ -37,4 +37,20 @@ function Crop:draw ()
   love.graphics.draw(self._frames[self._frameToDraw], self._x, self._y, 0, Scale.x, Scale.y)
 end
 
+function Crop:getX ()
+  return self._x
+end
+
+function Crop:getY ()
+  return self._y
+end
+
+function Crop:getFrames ()
+  return self._frames
+end
+
+function Crop:getFrameToDraw ()
+  return self._frameToDraw
+end
+
 return Crop

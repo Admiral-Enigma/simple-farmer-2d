@@ -1,7 +1,8 @@
 local Tilemap = require "core.Tilemap"
 local Picker = require "game.Picker"
 local Hud = require "game.ui.hud"
-local Crop = require "game.crops.Crop"
+Crop = require "game.crops.Crop"
+CropManager = require "game.crops.CropManager"
 Scale = require "scale"
 Camera = require "core.lib.hump.camera"
 
@@ -14,8 +15,10 @@ function love.load(arg)
   mapData = require "res.TestMap"
   map = Tilemap:new(32, 32, 100, 100, mapData)
 
-  testCrop = Crop:new("Fisksild", 64, 64, 10, Assets.wheat)
-  picker = Picker:new(map)
+  cropManager = CropManager:new(map)
+
+  --testCrop = Crop:new("Fisksild", 64, 64, 10, Assets.wheat)
+  picker = Picker:new(map, cropManager)
   hud = Hud:new(picker)
   camera = Camera.new(picker:getX(), picker:getY(), 1)
 
@@ -23,6 +26,7 @@ end
 
 function love.update(dt)
   picker:update(dt)
+  cropManager:update(dt)
   camera:lookAt(picker:getX(), picker:getY())
 end
 
@@ -31,7 +35,7 @@ function love.draw()
   love.graphics.rectangle("fill", 0, 0, 2000, 2000)
   camera:attach()
   map:draw()
-  testCrop:draw()
+  cropManager:draw()
   picker:draw()
   camera:detach()
   hud:draw()
@@ -44,6 +48,6 @@ function love.keypressed(key, scancode, isrepeat)
     love.event.quit()
   end
   if key == "p" then
-    testCrop:tick()
+    --testCrop:tick()
   end
 end
