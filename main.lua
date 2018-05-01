@@ -48,6 +48,6 @@ function love.keypressed(key, scancode, isrepeat)
     love.event.quit()
   end
   if key == "p" then
-    --testCrop:tick()
+    cropManager:tick()
   end
 end

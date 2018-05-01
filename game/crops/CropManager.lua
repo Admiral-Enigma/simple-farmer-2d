@@ -23,6 +23,12 @@ function CropManager:update (dt)
   end
 end
 
+function CropManager:tick ()
+  for k,v in ipairs(self._crops) do
+    v:tick()
+  end
+end
+
 function CropManager:draw ()
   for k,v in ipairs(self._crops) do
     v:draw()
