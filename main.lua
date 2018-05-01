@@ -1,6 +1,9 @@
 local Tilemap = require "core.Tilemap"
 local Picker = require "game.Picker"
 local Hud = require "game.ui.hud"
+local CropTimer = require "game.crops.CropTimer"
+Signal = require 'core.lib.hump.signal'
+Timer = require "core.lib.hump.timer"
 Crop = require "game.crops.Crop"
 CropManager = require "game.crops.CropManager"
 Globals = require "globals"
@@ -14,6 +17,7 @@ function love.load(arg)
 
   mapData = require "res.TestMap"
   map = Tilemap:new(32, 32, 100, 100, mapData)
+  cropTick = CropTimer:new()
 
   cropManager = CropManager:new(map)
 
@@ -28,6 +32,7 @@ function love.update(dt)
   picker:update(dt)
   cropManager:update(dt)
   camera:lookAt(picker:getX(), picker:getY())
+  cropTick:update(dt)
 end
 
 function love.draw()
@@ -39,7 +44,6 @@ function love.draw()
   picker:draw()
   camera:detach()
   hud:draw()
-
 end
 
 function love.keypressed(key, scancode, isrepeat)

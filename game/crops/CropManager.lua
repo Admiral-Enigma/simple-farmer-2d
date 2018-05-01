@@ -6,6 +6,9 @@ function CropManager:new(tilemap)
   local ins = setmetatable({}, self)
   ins._crops = {}
   ins._tilemap = tilemap or {}
+  Signal.register('cropTick', function ()
+    ins:tick()
+  end)
   return ins
 end
 
@@ -47,6 +50,8 @@ function CropManager:draw ()
     v:draw()
   end
 end
+
+
 
 
 return CropManager
