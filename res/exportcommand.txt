@@ -1,1 +1,1 @@
-Aseprite.exe -b --split-layers wheat.ase --save-as output1.png
+Aseprite.exe -b --split-layers art.ase --save-as output1.png

@@ -24,7 +24,7 @@ function love.load(arg)
   --testCrop = Crop:new("Fisksild", 64, 64, 10, Assets.wheat)
   picker = Picker:new(map, cropManager)
   hud = Hud:new(picker)
-  camera = Camera.new(picker:getX(), picker:getY(), 1)
+  camera = Camera.new(picker:getX(), picker:getY(), 2)
 
 end
 
