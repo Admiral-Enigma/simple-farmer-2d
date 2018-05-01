@@ -33,7 +33,7 @@ function Tilemap:_row_collumn_to_array_index (collumn, row)
   if self:isInsideMap(collumn, row) then
     return collumn + self._tile_collumns * row
   else
-    return 0
+    return false
   end
 end
 

@@ -10,11 +10,24 @@ function CropManager:new(tilemap)
 end
 
 function CropManager:createCrop (collumn, row, crop)
-  local newCropX = collumn * self._tilemap:getTileWidth()
-  local newCropY = row * self._tilemap:getTileHeight()
-  local newCrop = Crop:new(crop.name, newCropX, newCropY, crop.growthTime, crop.images)
-  table.insert(self._crops, newCrop)
-  print(#self._crops)
+  if self:_cropAt(collumn, row) == false then
+    local newCropX = collumn * self._tilemap:getTileWidth()
+    local newCropY = row * self._tilemap:getTileHeight()
+    local newCrop = Crop:new(crop.name, newCropX, newCropY, collumn, row, crop.growthTime, crop.images)
+    table.insert(self._crops, newCrop)
+    print("Created Crop")
+  end
+end
+
+function CropManager:_cropAt (collumn, row)
+  local isCrop = false
+  for k,v in ipairs(self._crops) do
+    if v:getCollumn() == collumn and v:getRow() == row then
+      isCrop = true
+      break
+    end
+  end
+  return isCrop
 end
 
 function CropManager:update (dt)

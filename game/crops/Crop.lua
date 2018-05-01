@@ -1,11 +1,13 @@
 local Crop = {}
 Crop.__index = Crop
 
-function Crop:new(name, x, y, growthTime, images)
+function Crop:new(name, x, y, collumn, row, growthTime, images)
   local ins = setmetatable({}, self)
   ins._name = name or "Æbleskiver"
   ins._x = x or 0
   ins._y = y or 0
+  ins._collumn = collumn or 0
+  ins._row = row or 0
   ins._growthTime = growthTime or 1
   ins._frames = images or {}
   ins._frameToDraw = math.ceil(#ins._frames / ins._growthTime)
@@ -51,6 +53,18 @@ end
 
 function Crop:getFrameToDraw ()
   return self._frameToDraw
+end
+
+function Crop:getName ()
+  return self._name
+end
+
+function Crop:getCollumn ()
+  return self._collumn
+end
+
+function Crop:getRow ()
+  return self._row
 end
 
 return Crop
