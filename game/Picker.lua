@@ -65,8 +65,11 @@ function Picker:keypressed(key, scancode, isrepeat)
     elseif self._currentTool == 3 then
 
     elseif self._currentTool == 4 then
+      local tile = self._tilemap:returnTileAtcollumnRow(self:_getCurrentCollumn(), self:_getCurrentRow())
       local crop = {name = "Fisksild", growthTime = 10, images = Assets.wheat}
-      self._cropmanager:createCrop(self:_getCurrentCollumn(), self:_getCurrentRow(), crop)
+      if tile == 2 then
+        self._cropmanager:createCrop(self:_getCurrentCollumn(), self:_getCurrentRow(), crop)
+      end
     end
   end
 end
