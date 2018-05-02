@@ -8,6 +8,7 @@ Crop = require "game.crops.Crop"
 CropManager = require "game.crops.CropManager"
 Globals = require "globals"
 Camera = require "core.lib.hump.camera"
+local minZoom, maxZoom = 1, 2
 
 
 function love.load(arg)
@@ -24,7 +25,7 @@ function love.load(arg)
   --testCrop = Crop:new("Fisksild", 64, 64, 10, Assets.wheat)
   picker = Picker:new(map, cropManager)
   hud = Hud:new(picker)
-  camera = Camera.new(picker:getX(), picker:getY(), 2)
+  camera = Camera.new(picker:getX(), picker:getY(), minZoom)
 
 end
 
@@ -51,6 +52,16 @@ function love.keypressed(key, scancode, isrepeat)
   if key == "q" then
     love.event.quit()
   end
+
+  if key == "z" then
+    local zoom = camera.scale
+    if zoom == minZoom then
+      camera:zoom(maxZoom)
+    else
+      camera:zoomTo(minZoom)
+    end
+  end
+
   if key == "p" then
     cropManager:tick()
   end

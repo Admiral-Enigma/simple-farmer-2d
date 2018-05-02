@@ -1,5 +1,5 @@
 #Stuff to add before public itch.io release
-- Zoom
+- Zoom - Done
 - Harvest Crops
 - Sell Crops
 
