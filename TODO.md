@@ -1,3 +1,9 @@
+#Stuff to add before public itch.io release
+- Zoom
+- Harvest Crops
+- Sell Crops
+
+
 # Picker
 - Add option to select between different tools (hoe, shovel, sickle,seeds) - Done
 - Have a icon in the bottom left corner showing what tool you have selected - Done
