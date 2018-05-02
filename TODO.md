@@ -3,6 +3,9 @@
 - Harvest Crops
 - Sell Crops
 
+# The Barn
+- Houses items(crops, seed and other stuff)
+- Has a UI to sell items
 
 # Picker
 - Add option to select between different tools (hoe, shovel, sickle,seeds) - Done
