@@ -1,6 +1,7 @@
 local CropManager = {}
 CropManager.__index = CropManager
 local index = 1
+local Crop = require "game.crops.Crop"
 
 function CropManager:new(tilemap)
   local ins = setmetatable({}, self)

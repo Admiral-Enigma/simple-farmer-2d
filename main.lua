@@ -1,69 +1,25 @@
-local Tilemap = require "core.Tilemap"
-local Picker = require "game.Picker"
-local Hud = require "game.ui.hud"
-local CropTimer = require "game.crops.CropTimer"
+local StateManager = require "core.StateManager"
 Color = require "utils.Color"
 Signal = require 'core.lib.hump.signal'
 Timer = require "core.lib.hump.timer"
-Crop = require "game.crops.Crop"
-CropManager = require "game.crops.CropManager"
-Globals = require "globals"
-Camera = require "core.lib.hump.camera"
-local minZoom, maxZoom = 1, 2
 
-
-function love.load(arg)
+function love.load()
   love.keyboard.setKeyRepeat(true)
   love.graphics.setDefaultFilter("nearest", "nearest")
-  Assets = require "asset"
-
   mapData = require "res.TestMap"
-  map = Tilemap:new(32, 32, 100, 100, mapData)
-  cropTick = CropTimer:new()
 
-  cropManager = CropManager:new(map)
-
-  --testCrop = Crop:new("Fisksild", 64, 64, 10, Assets.wheat)
-  picker = Picker:new(map, cropManager)
-  hud = Hud:new(picker)
-  camera = Camera.new(picker:getX(), picker:getY(), minZoom)
-
-end
-
-function love.update(dt)
-  picker:update(dt)
-  cropManager:update(dt)
-  camera:lookAt(picker:getX(), picker:getY())
-  cropTick:update(dt)
-end
-
-function love.draw()
-  love.graphics.setColor(rgb(53, 99, 35))
-  love.graphics.rectangle("fill", 0, 0, 2000, 2000)
-  camera:attach()
-  map:draw()
-  cropManager:draw()
-  picker:draw()
-  camera:detach()
-  hud:draw()
+  Assets = require "asset"
+  StateManager:push("state.game")
 end
 
 function love.keypressed(key, scancode, isrepeat)
-  picker:keypressed(key, scancode, isrepeat)
-  if key == "q" then
-    love.event.quit()
-  end
+  StateManager:tryInvoke("keypressed", key, scancode, isrepeat)
+end
 
-  if key == "z" then
-    local zoom = camera.scale
-    if zoom == minZoom then
-      camera:zoom(maxZoom)
-    else
-      camera:zoomTo(minZoom)
-    end
-  end
+function love.update(dt)
+  StateManager:tryInvoke("update", dt)
+end
 
-  if key == "p" then
-    cropManager:tick()
-  end
+function love.draw()
+  StateManager:tryInvoke("draw")
 end

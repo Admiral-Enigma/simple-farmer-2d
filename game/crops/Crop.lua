@@ -1,3 +1,4 @@
+local globals = require "..globals"
 local Crop = {}
 Crop.__index = Crop
 
@@ -36,7 +37,7 @@ end
 function Crop:draw ()
   -- Reset color
   love.graphics.setColor(255,255,255,255)
-  love.graphics.draw(self._frames[self._frameToDraw], self._x, self._y, 0, Globals.scale.x, Globals.scale.y)
+  love.graphics.draw(self._frames[self._frameToDraw], self._x, self._y, 0, globals.scale.x, globals.scale.y)
 end
 
 function Crop:getX ()
