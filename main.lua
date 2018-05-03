@@ -2,6 +2,7 @@ local Tilemap = require "core.Tilemap"
 local Picker = require "game.Picker"
 local Hud = require "game.ui.hud"
 local CropTimer = require "game.crops.CropTimer"
+Color = require "utils.Color"
 Signal = require 'core.lib.hump.signal'
 Timer = require "core.lib.hump.timer"
 Crop = require "game.crops.Crop"
@@ -37,7 +38,7 @@ function love.update(dt)
 end
 
 function love.draw()
-  love.graphics.setColor(53,99,35)
+  love.graphics.setColor(rgb(53, 99, 35))
   love.graphics.rectangle("fill", 0, 0, 2000, 2000)
   camera:attach()
   map:draw()

@@ -54,13 +54,13 @@ function Tilemap:draw()
     for collumn=1,self._tile_collumns do
       local tileID = self._tile_data[index]
       if tileID == 0 then
-        love.graphics.setColor(47,129,54)
+        love.graphics.setColor(rgb(47,129,54))
         love.graphics.rectangle("fill", tile_draw_x, tile_draw_y, self._tile_width, self._tile_height)
       elseif tileID == 1 then
-        love.graphics.setColor(47,159,54)
+        love.graphics.setColor(rgb(47,159,54))
         love.graphics.rectangle("fill", tile_draw_x, tile_draw_y, self._tile_width, self._tile_height)
       elseif tileID == 2 then
-        love.graphics.setColor(240,147,43)
+        love.graphics.setColor(rgb(240,147,43))
         love.graphics.rectangle("fill", tile_draw_x, tile_draw_y, self._tile_width, self._tile_height)
       end
 
