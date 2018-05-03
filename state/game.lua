@@ -6,7 +6,6 @@ local globals = require "..globals"
 local StateManager = require "..core.StateManager"
 local CropManager = require "..game.crops.CropManager"
 local Camera = require "..core.lib.hump.camera"
-local minZoom, maxZoom = 1, 2
 local gameState = {}
 
 function gameState:init()
@@ -49,10 +48,10 @@ function gameState:keypressed(key, scancode, isrepeat)
 
   if key == "z" then
     local zoom = camera.scale
-    if zoom == minZoom then
-      camera:zoom(maxZoom)
+    if zoom == globals.zoom.min then
+      camera:zoom(globals.zoom.max)
     else
-      camera:zoomTo(minZoom)
+      camera:zoomTo(globals.zoom.min)
     end
   end
 
