@@ -23,6 +23,30 @@ function CropManager:createCrop (collumn, row, crop)
   end
 end
 
+function CropManager:harvest (collumn, row)
+  if self:_cropAt(collumn, row) == true then
+    local index = self:getCropAt(collumn, row)
+    local crop = self._crops[index]
+    if crop:getHarvestable() == true then
+      -- HARVEST
+      saveEngine:removeItem("crops", crop:getId())
+      -- TODO Make more safe
+      table.remove(self._crops, index)
+    end
+  end
+end
+
+function CropManager:getCropAt (collumn, row)
+  local cropIndex = nil
+  for k,v in ipairs(self._crops) do
+    if v:getCollumn() == collumn and v:getRow() == row then
+      cropIndex = k
+      break
+    end
+  end
+  return cropIndex
+end
+
 function CropManager:_cropAt (collumn, row)
   local isCrop = false
   for k,v in ipairs(self._crops) do

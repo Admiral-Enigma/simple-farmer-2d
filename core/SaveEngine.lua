@@ -31,10 +31,16 @@ function SaveEngine:saveItem (dataStore, item)
   table.insert(store, item)
 end
 
-function SaveEngine:removeItem (dataStore, item)
+function SaveEngine:removeItem (dataStore, itemID)
   local store = self._dataStores[dataStore]
   if not store then return end
-  table.remove(store, item)
+  local itemIndex = nil
+  for k,v in ipairs(store) do
+    if v[id] == itemID then
+      itemIndex = k
+    end
+  end
+  table.remove(store, store[itemIndex])
 end
 
 function SaveEngine:encode (table)

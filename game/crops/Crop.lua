@@ -76,12 +76,20 @@ function Crop:getName ()
   return self._name
 end
 
+function Crop:getHarvestable (args)
+  return self._harvestable
+end
+
 function Crop:getCollumn ()
   return self._collumn
 end
 
 function Crop:getRow ()
   return self._row
+end
+
+function Crop:getId ()
+  return self._id
 end
 
 return Crop

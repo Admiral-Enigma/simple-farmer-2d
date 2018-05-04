@@ -63,6 +63,7 @@ function Picker:keypressed(key, scancode, isrepeat)
     elseif self._currentTool == 2 then
 
     elseif self._currentTool == 3 then
+      self._cropmanager:harvest(self:_getCurrentCollumn(), self:_getCurrentRow())
 
     elseif self._currentTool == 4 then
       local tile = self._tilemap:returnTileAtcollumnRow(self:_getCurrentCollumn(), self:_getCurrentRow())
