@@ -10,6 +10,9 @@ function CropManager:new(tilemap)
   Signal.register('cropTick', function ()
     ins:tick()
   end)
+  Signal.register('cropTick', function ()
+    ins:saveState()
+  end)
   return ins
 end
 
@@ -58,6 +61,14 @@ function CropManager:_cropAt (collumn, row)
   return isCrop
 end
 
+function CropManager:saveState()
+  -- Clear crops datastore and fill it up again
+  saveEngine:clearDataStore("crops")
+  for k,v in ipairs(self._crops) do
+    saveEngine:saveItem("crops", v:serialize())
+  end
+end
+
 function CropManager:update (dt)
   for k,v in ipairs(self._crops) do
     v:update(dt)
@@ -75,8 +86,5 @@ function CropManager:draw ()
     v:draw()
   end
 end
-
-
-
 
 return CropManager

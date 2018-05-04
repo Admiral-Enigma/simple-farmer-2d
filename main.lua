@@ -26,6 +26,7 @@ function love.keypressed(key, scancode, isrepeat)
 end
 
 function love.update(dt)
+  require("core.lib.lovebird").update()
   StateManager:tryInvoke("update", dt)
 end
 

@@ -4,6 +4,7 @@ CropTimer.__index = CropTimer
 function CropTimer:new ()
   local ins = setmetatable({}, self)
   Timer.every(1, function () Signal.emit('cropTick') end)
+  Timer.every(5, function () Signal.emit('save') end)
   return ins
 end
 
