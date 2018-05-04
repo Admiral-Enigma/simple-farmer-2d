@@ -18,8 +18,8 @@ function CropManager:createCrop (collumn, row, crop)
     local newCropX = collumn * self._tilemap:getTileWidth()
     local newCropY = row * self._tilemap:getTileHeight()
     local newCrop = Crop:new(crop.name, newCropX, newCropY, collumn, row, crop.growthTime, crop.images)
+    saveEngine:saveItem("crops", newCrop:serialize())
     table.insert(self._crops, newCrop)
-    print("Created Crop")
   end
 end
 

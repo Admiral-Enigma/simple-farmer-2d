@@ -1,4 +1,6 @@
 local globals = require "..globals"
+local md5 = require 'core.lib.md5'
+
 local Crop = {}
 Crop.__index = Crop
 
@@ -13,6 +15,7 @@ function Crop:new(name, x, y, collumn, row, growthTime, images)
   ins._frames = images or {}
   ins._frameToDraw = math.ceil(#ins._frames / ins._growthTime)
   ins._harvestable = false
+  ins._id = md5.sumhexa(tostring(math.random()))
   return ins
 end
 
@@ -38,6 +41,19 @@ function Crop:draw ()
   -- Reset color
   love.graphics.setColor(255,255,255,255)
   love.graphics.draw(self._frames[self._frameToDraw], self._x, self._y, 0, globals.scale.x, globals.scale.y)
+end
+
+function Crop:serialize ()
+  return {
+    name = self._name,
+    x = self._x,
+    y = self._y,
+    collumn = self._collumn,
+    row = self._row,
+    growthTime = self._growthTime,
+    harvestable = self._harvestable,
+    id = self._id
+  }
 end
 
 function Crop:getX ()
