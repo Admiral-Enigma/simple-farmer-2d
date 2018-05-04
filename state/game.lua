@@ -55,7 +55,14 @@ function gameState:keypressed(key, scancode, isrepeat)
   end
 
   if key == "p" then
-    cropManager:tick()
+    --cropManager:tick()
+    --
+    cropManager:setCrops()
+
+  end
+
+  if key == "i" then
+    saveEngine:saveToDisk()
   end
 end
 

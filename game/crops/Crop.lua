@@ -12,7 +12,7 @@ function Crop:new(name, x, y, collumn, row, growthTime, images)
   ins._collumn = collumn or 0
   ins._row = row or 0
   ins._growthTime = growthTime or 1
-  ins._frames = images or {}
+  ins._frames = Assets.wheat
   ins._frameToDraw = math.ceil(#ins._frames / ins._growthTime)
   ins._harvestable = false
   ins._id = md5.sumhexa(tostring(math.random()))
@@ -20,12 +20,12 @@ function Crop:new(name, x, y, collumn, row, growthTime, images)
 end
 
 function Crop:tick ()
-  if self._harvestable == false and self._growthTime > 0 then
+  if self._harvestable == false and self._growthTime > 1 then
     self._growthTime = self._growthTime - 1
     self._frameToDraw = math.ceil(#self._frames / self._growthTime)
     print(self._growthTime)
     print(self._harvestable)
-    if self._growthTime == 0 then
+    if self._growthTime == 1 then
       self._harvestable = true
       self._frameToDraw = #self._frames
     end

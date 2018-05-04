@@ -12,6 +12,7 @@ function love.load()
   mapData = require "res.TestMap"
   saveEngine = SaveEngine:new()
   saveEngine:createDataStore("crops")
+  saveEngine:loadData()
   --local testCrop = Crop:new("Fisk", 32, 32, 4, 6, 10, Assets.wheat)
   --local encodedCrop = saveEngine:encode(testCrop:serialize())
   --print(encodedCrop)

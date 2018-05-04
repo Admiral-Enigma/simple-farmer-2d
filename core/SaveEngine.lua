@@ -6,11 +6,38 @@ SaveEngine.__index = SaveEngine
 function SaveEngine:new ()
   local ins = setmetatable({}, self)
   ins._dataStores = {}
+  ins.loadedData = {}
+
   return ins
+end
+
+function SaveEngine:loadData ()
+  if love.filesystem.exists("save.txt") then
+    local rawSave = self:readFromDisk()
+    local decodedSave = bitser.loads(rawSave)
+    self.loadedData = decodedSave
+    self._dataStores["crops"] = decodedSave.crops
+    print(decodedSave)
+  end
+end
+
+function SaveEngine:readFromDisk ()
+  local content, size = love.filesystem.read("save.txt")
+  print(content)
+  return content
+end
+function SaveEngine:saveToDisk ()
+  local success, message = love.filesystem.write("save.txt", self:encode(self._dataStores))
 end
 
 function SaveEngine:createDataStore (name)
   self._dataStores[name] = {}
+end
+
+function SaveEngine:getDataStore (dataStore)
+  local store = self._dataStores[dataStore]
+  if not store then return end
+  return store
 end
 
 function SaveEngine:getItemIndex (dataStore, id)
@@ -60,6 +87,5 @@ function SaveEngine:decode (data)
   local decoded = bitser.loads(data)
   return decoded
 end
-
 
 return SaveEngine

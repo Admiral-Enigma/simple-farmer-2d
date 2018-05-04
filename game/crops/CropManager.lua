@@ -11,16 +11,23 @@ function CropManager:new(tilemap)
     ins:tick()
   end)
   Signal.register('cropTick', function ()
-    ins:saveState()
+    --ins:saveState()
   end)
   return ins
+end
+
+function CropManager:setCrops ()
+  local crops = saveEngine:getDataStore("crops")
+  for k,v in ipairs(crops) do
+    self:createCrop(v.collumn, v.row, v)
+  end
 end
 
 function CropManager:createCrop (collumn, row, crop)
   if self:_cropAt(collumn, row) == false then
     local newCropX = collumn * self._tilemap:getTileWidth()
     local newCropY = row * self._tilemap:getTileHeight()
-    local newCrop = Crop:new(crop.name, newCropX, newCropY, collumn, row, crop.growthTime, crop.images)
+    local newCrop = Crop:new(crop.name, newCropX, newCropY, collumn, row, crop.growthTime, Assets.wheat)
     saveEngine:saveItem("crops", newCrop:serialize())
     table.insert(self._crops, newCrop)
   end
