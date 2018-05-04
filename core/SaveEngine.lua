@@ -16,7 +16,7 @@ function SaveEngine:loadData ()
     local rawSave = self:readFromDisk()
     local decodedSave = bitser.loads(rawSave)
     self.loadedData = decodedSave
-    self._dataStores["crops"] = decodedSave.crops
+    self._dataStores = decodedSave
     print(decodedSave)
   end
 end
