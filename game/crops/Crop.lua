@@ -4,7 +4,7 @@ local md5 = require 'core.lib.md5'
 local Crop = {}
 Crop.__index = Crop
 
-function Crop:new(name, x, y, collumn, row, growthTime, images)
+function Crop:new(name, x, y, collumn, row, growthTime, images, harvestable)
   local ins = setmetatable({}, self)
   ins._name = name or "Æbleskiver"
   ins._x = x or 0
@@ -14,7 +14,7 @@ function Crop:new(name, x, y, collumn, row, growthTime, images)
   ins._growthTime = growthTime or 1
   ins._frames = Assets.wheat
   ins._frameToDraw = math.ceil(#ins._frames / ins._growthTime)
-  ins._harvestable = false
+  ins._harvestable = harvestable or false
   ins._id = md5.sumhexa(tostring(math.random()))
   return ins
 end
