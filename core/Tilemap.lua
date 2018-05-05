@@ -8,6 +8,9 @@ function Tilemap:new(tile_width, tile_height, tiles_rows, tiles_collumns, tilema
   ins._tile_collumns = tiles_collumns or 0
   ins._tile_rows = tiles_rows or 0
   ins._tile_data = tilemap_data or {}
+  Signal.register('cropTick', function ()
+    ins:saveMap()
+  end)
   return ins
 end
 
@@ -77,6 +80,11 @@ function Tilemap:changeTile (id, collumn, row)
     local index = self:_row_collumn_to_array_index(collumn, row)
     self._tile_data[index] = id
   end
+end
+
+function Tilemap:saveMap ()
+  saveEngine:clearDataStore("map")
+  saveEngine:setDataStore("map", self._tile_data)
 end
 
 function Tilemap:getColumns ()

@@ -40,6 +40,11 @@ function SaveEngine:getDataStore (dataStore)
   return store
 end
 
+function SaveEngine:setDataStore (dataStore, data)
+  local store = self._dataStores[dataStore]
+  if not store then return end
+  table.insert(store, data)
+end
 function SaveEngine:getItemIndex (dataStore, id)
   local store = self._dataStores[dataStore]
   if not store then return end

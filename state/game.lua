@@ -9,10 +9,18 @@ local Camera = require "..core.lib.hump.camera"
 local gameState = {}
 
 function gameState:init()
-  map = Tilemap:new(32, 32, 100, 100, mapData)
+  local mapToLoad
+  if #saveEngine:getDataStore("map") == 0 then
+    mapToLoad = mapData
+  else
+    mapToLoad = saveEngine:getDataStore("map")[1]
+    print("sildFisk")
+  end
+  map = Tilemap:new(32, 32, 100, 100, mapToLoad)
   cropTick = CropTimer:new()
 
   cropManager = CropManager:new(map)
+  cropManager:loadCrops()
 
   --testCrop = Crop:new("Fisksild", 64, 64, 10, Assets.wheat)
   picker = Picker:new(map, cropManager)
