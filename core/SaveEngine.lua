@@ -11,23 +11,22 @@ function SaveEngine:new ()
   return ins
 end
 
-function SaveEngine:loadData ()
-  if love.filesystem.exists("save.txt") then
-    local rawSave = self:readFromDisk()
+function SaveEngine:loadData (saveInt)
+  local fileInfo = love.filesystem.getInfo("save"..saveInt)
+  if fileInfo ~= nil then
+    local rawSave = self:readFromDisk(saveInt)
     local decodedSave = bitser.loads(rawSave)
     self.loadedData = decodedSave
     self._dataStores = decodedSave
-    print(decodedSave)
   end
 end
 
-function SaveEngine:readFromDisk ()
-  local content, size = love.filesystem.read("save.txt")
-  print(content)
+function SaveEngine:readFromDisk (saveInt)
+  local content, size = love.filesystem.read("save"..saveInt)
   return content
 end
-function SaveEngine:saveToDisk ()
-  local success, message = love.filesystem.write("save.txt", self:encode(self._dataStores))
+function SaveEngine:saveToDisk (saveInt)
+  local success, message = love.filesystem.write("save"..saveInt, self:encode(self._dataStores))
 end
 
 function SaveEngine:createDataStore (name)

@@ -14,7 +14,6 @@ function gameState:init()
     mapToLoad = mapData
   else
     mapToLoad = saveEngine:getDataStore("map")[1]
-    print("sildFisk")
   end
   map = Tilemap:new(32, 32, 100, 100, mapToLoad)
   cropTick = CropTimer:new()
@@ -70,7 +69,7 @@ function gameState:keypressed(key, scancode, isrepeat)
   end
 
   if key == "i" then
-    saveEngine:saveToDisk()
+    saveEngine:saveToDisk(1)
   end
 end
 
