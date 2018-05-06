@@ -23,8 +23,8 @@ function Crop:tick ()
   if self._harvestable == false and self._growthTime > 1 then
     self._growthTime = self._growthTime - 1
     self._frameToDraw = math.ceil(#self._frames / self._growthTime)
-    print(self._growthTime)
-    print(self._harvestable)
+    --print(self._growthTime)
+    --print(self._harvestable)
     if self._growthTime == 1 then
       self._harvestable = true
       self._frameToDraw = #self._frames
