@@ -8,7 +8,7 @@ function Tilemap:new(tile_width, tile_height, tiles_rows, tiles_collumns, tilema
   ins._tile_collumns = tiles_collumns or 0
   ins._tile_rows = tiles_rows or 0
   ins._tile_data = tilemap_data or {}
-  Signal.register('cropTick', function ()
+  Signal.register('save', function ()
     ins:saveMap()
   end)
   return ins

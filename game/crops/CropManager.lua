@@ -10,7 +10,7 @@ function CropManager:new(tilemap)
   Signal.register('cropTick', function ()
     ins:tick()
   end)
-  Signal.register('cropTick', function ()
+  Signal.register('save', function ()
     ins:saveState()
   end)
   return ins
