@@ -27,7 +27,7 @@ function CropManager:createCrop (collumn, row, crop)
   if self:_cropAt(collumn, row) == false then
     local newCropX = collumn * self._tilemap:getTileWidth()
     local newCropY = row * self._tilemap:getTileHeight()
-    local newCrop = Crop:new(crop.name, newCropX, newCropY, collumn, row, crop.growthTime, Assets.wheat, crop.harvestable)
+    local newCrop = Crop:new(crop.name, newCropX, newCropY, collumn, row, crop.growthTime, Assets.wheat, crop.harvestable, crop.blueprint)
     saveEngine:saveItem("crops", newCrop:serialize())
     table.insert(self._crops, newCrop)
   end
@@ -40,6 +40,8 @@ function CropManager:harvest (collumn, row)
     if crop:getHarvestable() == true then
       -- HARVEST
       saveEngine:removeItem("crops", crop:getId())
+      barn:addItem(crop:getBlueprint())
+      print(crop:getBlueprint())
       -- TODO Make more safe
       table.remove(self._crops, index)
     end

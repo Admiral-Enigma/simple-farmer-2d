@@ -1,6 +1,7 @@
 local Picker = {}
 Picker.__index = Picker
 local name = require "..utils.TileTools"
+local ItemBlueprints = require "game.item.ItemBlueprints"
 
 function Picker:new(tilemap, cropmanager)
   local ins = setmetatable({}, self)
@@ -67,7 +68,7 @@ function Picker:keypressed(key, scancode, isrepeat)
 
     elseif self._currentTool == 4 then
       local tile = self._tilemap:returnTileAtcollumnRow(self:_getCurrentCollumn(), self:_getCurrentRow())
-      local crop = {name = "Fisksild", growthTime = 10, images = Assets.wheat}
+      local crop = {name = "Fisksild", growthTime = 10, images = Assets.wheat, blueprint = ItemBlueprints.wheat}
       if tile == 2 then
         self._cropmanager:createCrop(self:_getCurrentCollumn(), self:_getCurrentRow(), crop)
       end

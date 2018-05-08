@@ -48,9 +48,6 @@ end
 
 function gameState:keypressed(key, scancode, isrepeat)
   picker:keypressed(key, scancode, isrepeat)
-  if key == "q" then
-    love.event.quit()
-  end
 
   if key == "z" then
     local zoom = camera.scale
@@ -60,6 +57,7 @@ function gameState:keypressed(key, scancode, isrepeat)
       camera:zoomTo(globals.zoom.min)
     end
   end
+
 
   if key == "p" then
     --cropManager:tick()
@@ -71,6 +69,8 @@ function gameState:keypressed(key, scancode, isrepeat)
   if key == "i" then
     saveEngine:saveToDisk(1)
   end
+
+
 end
 
 return gameState
