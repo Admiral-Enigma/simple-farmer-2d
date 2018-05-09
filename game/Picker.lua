@@ -1,6 +1,6 @@
 local Picker = {}
 Picker.__index = Picker
-local name = require "..utils.TileTools"
+local tileTools = require "utils.TileTools"
 
 function Picker:new(tilemap, cropmanager)
   local ins = setmetatable({}, self)

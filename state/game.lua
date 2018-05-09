@@ -6,7 +6,7 @@ local globals = require "globals"
 local StateManager = require "core.StateManager"
 local CropManager = require "game.crops.CropManager"
 local Camera = require "core.lib.hump.camera"
-local ItemBlueprints = require "game.item.ItemBlueprints"
+ItemBlueprints = require "game.item.ItemBlueprints"
 local gameState = {}
 
 function gameState:init()
@@ -50,7 +50,8 @@ end
 
 function gameState:keypressed(key, scancode, isrepeat)
   picker:keypressed(key, scancode, isrepeat)
-  if key == "r" then
+
+  if key == "e" then
     StateManager:push("state.barnUI")
   end
 
