@@ -28,7 +28,7 @@ function Item:serialize ()
     type = self.type,
     sellAble = self.sellAble,
     stackAble = self.stackAble,
-    amount = self.amount
+    amount = self.amount,
   }
 
 end

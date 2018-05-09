@@ -9,7 +9,6 @@ local blueprints = {}
   - stackAble
   #Optional
   - Icon
-  -
 ]]
 
 blueprints.wheat = {
@@ -19,6 +18,16 @@ blueprints.wheat = {
   type = 1,
   sellAble = true,
   stackAble = true
+}
+
+blueprints.droemmeKage = {
+  name = "Drømmekage",
+  price = 1337,
+  description = "Smager sku meget godt",
+  type = 2,
+  sellAble = true,
+  stackAble = false,
+  Icon = Assets.kage
 }
 
 return blueprints

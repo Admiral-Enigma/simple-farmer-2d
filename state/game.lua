@@ -6,6 +6,7 @@ local globals = require "globals"
 local StateManager = require "core.StateManager"
 local CropManager = require "game.crops.CropManager"
 local Camera = require "core.lib.hump.camera"
+local ItemBlueprints = require "game.item.ItemBlueprints"
 local gameState = {}
 
 function gameState:init()
@@ -25,6 +26,7 @@ function gameState:init()
   picker = Picker:new(map, cropManager)
   hud = Hud:new(picker)
   camera = Camera.new(picker:getX(), picker:getY(), minZoom)
+  barn:addItem(ItemBlueprints.droemmeKage)
 
 end
 

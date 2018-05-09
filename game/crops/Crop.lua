@@ -1,6 +1,5 @@
 local globals = require "..globals"
 local md5 = require 'core.lib.md5'
-local ItemBlueprints = require "game.item.ItemBlueprints"
 
 local Crop = {}
 Crop.__index = Crop
@@ -16,7 +15,7 @@ function Crop:new(name, x, y, collumn, row, growthTime, images, harvestable, blu
   ins._frames = Assets.wheat
   ins._frameToDraw = math.ceil(#ins._frames / ins._growthTime)
   ins._harvestable = harvestable or false
-  ins._blueprint = blueprint 
+  ins._blueprint = blueprint
   ins._id = md5.sumhexa(tostring(math.random()))
   return ins
 end
