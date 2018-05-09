@@ -26,7 +26,8 @@ function gameState:init()
   picker = Picker:new(map, cropManager)
   hud = Hud:new(picker)
   camera = Camera.new(picker:getX(), picker:getY(), minZoom)
-  barn:addItem(ItemBlueprints.droemmeKage)
+  barn:load()
+  --barn:addItem(ItemBlueprints.droemmeKage)
 
 end
 

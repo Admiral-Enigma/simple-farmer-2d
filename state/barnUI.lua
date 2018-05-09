@@ -21,7 +21,7 @@ end
 function barnState:draw()
   local stateBelow = StateManager:get(-1)
   stateBelow:draw()
-  local selectedItem = {}
+  local selectedItem = nil
   local windowSizeWidth, windowSizeHeight = love.graphics.getDimensions( )
 
   -- Main panel
@@ -53,14 +53,11 @@ function barnState:draw()
   love.graphics.setColor(rgb(115,62,57))
   love.graphics.rectangle("fill", infoX, infoY, infoW, infoH)
   love.graphics.setColor(rgb(255,255,255))
-  love.graphics.print(selectedItem.name, infoX + 10, infoY + 5)
-  love.graphics.printf(selectedItem.description, infoX + 10, infoY + 25, infoW - 10)
-  love.graphics.print("Price: "..selectedItem.price, infoX + 10, infoY + 45)
-
-
-
-
-
+  if selectedItem ~= nil then
+    love.graphics.print(selectedItem.name, infoX + 10, infoY + 5)
+    love.graphics.printf(selectedItem.description, infoX + 10, infoY + 25, infoW - 10)
+    love.graphics.print("Price: "..selectedItem.price, infoX + 10, infoY + 45)
+  end
 
 end
 

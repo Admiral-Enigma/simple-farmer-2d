@@ -1,7 +1,7 @@
 local Item = {}
 Item.__index = Item
 
-function Item:new (itemBluprint)
+function Item:new (itemBluprint, amount)
   local ins = setmetatable({}, self)
   ins.name = itemBluprint.name or ""
   ins.price = itemBluprint.price or 0
@@ -9,7 +9,8 @@ function Item:new (itemBluprint)
   ins.type = itemBluprint.type or 1
   ins.sellAble = itemBluprint.sellAble or false
   ins.stackAble = itemBluprint.stackAble or false
-  ins.amount = 1
+  ins.amount = amount or 1
+  ins.icon = itemBluprint.Icon or nil
   return ins
 end
 
@@ -29,6 +30,7 @@ function Item:serialize ()
     sellAble = self.sellAble,
     stackAble = self.stackAble,
     amount = self.amount,
+    icon = self.icon
   }
 
 end
