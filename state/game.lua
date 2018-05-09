@@ -1,11 +1,11 @@
-local Tilemap = require "..core.Tilemap"
-local Picker = require "..game.Picker"
-local Hud = require "..game.ui.hud"
-local CropTimer = require "..game.crops.CropTimer"
-local globals = require "..globals"
-local StateManager = require "..core.StateManager"
-local CropManager = require "..game.crops.CropManager"
-local Camera = require "..core.lib.hump.camera"
+local Tilemap = require "core.Tilemap"
+local Picker = require "game.Picker"
+local Hud = require "game.ui.hud"
+local CropTimer = require "game.crops.CropTimer"
+local globals = require "globals"
+local StateManager = require "core.StateManager"
+local CropManager = require "game.crops.CropManager"
+local Camera = require "core.lib.hump.camera"
 local gameState = {}
 
 function gameState:init()
@@ -48,6 +48,9 @@ end
 
 function gameState:keypressed(key, scancode, isrepeat)
   picker:keypressed(key, scancode, isrepeat)
+  if key == "r" then
+    StateManager:push("state.barnUI")
+  end
 
   if key == "z" then
     local zoom = camera.scale

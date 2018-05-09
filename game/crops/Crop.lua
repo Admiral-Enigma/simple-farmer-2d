@@ -16,7 +16,7 @@ function Crop:new(name, x, y, collumn, row, growthTime, images, harvestable, blu
   ins._frames = Assets.wheat
   ins._frameToDraw = math.ceil(#ins._frames / ins._growthTime)
   ins._harvestable = harvestable or false
-  ins._blueprint = blueprint or ItemBlueprints.wheat
+  ins._blueprint = blueprint 
   ins._id = md5.sumhexa(tostring(math.random()))
   return ins
 end

@@ -32,10 +32,7 @@ function love.keypressed(key, scancode, isrepeat)
     love.event.quit()
   end
 
-  if key == "r" then
-    StateManager:push("state.barn")
-    print("sidl")
-  end
+
 
 end
 

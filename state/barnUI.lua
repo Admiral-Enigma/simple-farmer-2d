@@ -9,7 +9,7 @@ function barnState:init ()
 end
 
 function barnState:keypressed(key, scancode, isrepeat)
-  if key == "return" then
+  if key == "r" then
     StateManager:pop()
   elseif key == "down" then
     index = math.min(index + 1, #items)
@@ -39,7 +39,7 @@ function barnState:draw()
     end
     love.graphics.rectangle("fill", itemX, itemY, itemWidth, itemHeight)
     love.graphics.setColor(rgb(0,0,0))
-    love.graphics.print(item.name, itemX+ 5, itemY + 5)
+    love.graphics.print(item.name.." x"..item.amount, itemX+ 5, itemY + 5)
     itemY = itemY + itemHeight + 8
   end
 end
