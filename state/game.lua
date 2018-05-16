@@ -1,5 +1,5 @@
 local Tilemap = require "core.Tilemap"
-local Picker = require "game.Picker"
+local Player = require "game.Player"
 local Hud = require "game.ui.hud"
 local CropTimer = require "game.crops.CropTimer"
 local globals = require "globals"
@@ -23,18 +23,18 @@ function gameState:init()
   cropManager:loadCrops()
 
   --testCrop = Crop:new("Fisksild", 64, 64, 10, Assets.wheat)
-  picker = Picker:new(map, cropManager)
-  hud = Hud:new(picker)
-  camera = Camera.new(picker:getX(), picker:getY(), minZoom)
+  player = Player:new(map, cropManager)
+  hud = Hud:new(player)
+  camera = Camera.new(player:getX(), player:getY(), minZoom)
   barn:load()
   --barn:addItem(ItemBlueprints.droemmeKage)
 
 end
 
 function gameState:update(dt)
-  picker:update(dt)
+  player:update(dt)
   cropManager:update(dt)
-  camera:lookAt(picker:getX(), picker:getY())
+  camera:lookAt(player:getX(), player:getY())
   cropTick:update(dt)
 end
 
@@ -44,13 +44,13 @@ function gameState:draw()
   camera:attach()
   map:draw()
   cropManager:draw()
-  picker:draw()
+  player:draw()
   camera:detach()
   hud:draw()
 end
 
 function gameState:keypressed(key, scancode, isrepeat)
-  picker:keypressed(key, scancode, isrepeat)
+  player:keypressed(key, scancode, isrepeat)
 
   if key == "e" then
     StateManager:push("state.barnUI")
