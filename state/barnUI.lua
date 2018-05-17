@@ -27,7 +27,7 @@ function barnState:draw()
   -- Main panel
   local barnW, barnH = 400, 300
   local barnX, barnY = windowSizeWidth / 2 - barnW / 2, windowSizeHeight / 2 - barnH / 2
-  love.graphics.setColor(rgb(115,62,57))
+  love.graphics.setColor(rgba(24,20,37, 200))
   love.graphics.rectangle("fill", barnX, barnY, barnW, barnH)
   love.graphics.setColor(rgb(255,255,255))
   love.graphics.print("Items", barnX + 10, barnY + 5)
@@ -50,7 +50,7 @@ function barnState:draw()
   --Info panel
   local infoW, infoH = 200, 300
   local infoX, infoY = barnX - infoW - 5, barnY
-  love.graphics.setColor(rgb(115,62,57))
+  love.graphics.setColor(rgba(24,20,37, 200))
   love.graphics.rectangle("fill", infoX, infoY, infoW, infoH)
   love.graphics.setColor(rgb(255,255,255))
   if selectedItem ~= nil then
