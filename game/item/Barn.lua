@@ -13,7 +13,7 @@ end
 
 function Barn:load ()
   local items = saveEngine:getDataStore("items")
-  for k,v in ipairs(self._items) do
+  for k,v in ipairs(items) do
     self:addItem(v, v.amount)
   end
 end
