@@ -2,6 +2,8 @@ local Player = {}
 Player.__index = Player
 local tileTools = require "utils.TileTools"
 local Picker = require "game.Picker"
+local tweenMethod = "out-quad"
+local tweenTime = 0.5
 
 function Player:new(tilemap, cropmanager)
   local ins = setmetatable({}, self)
@@ -87,7 +89,7 @@ function Player:move (dir)
     if self.state == "idle" and self._tilemap:isInsideMap(math.floor((self._y - self._tileheight) / self._tilemap:getTileHeight()), self:_getCurrentRow()) then
       self.state = "moving"
 
-      Timer.tween(0.5, self, {_x = self._x, _y = self._y - self._tileheight}, "linear", function ()
+      Timer.tween(tweenTime, self, {_x = self._x, _y = self._y - self._tileheight}, tweenMethod, function ()
         self.state = "idle"
       end)
 
@@ -96,7 +98,7 @@ function Player:move (dir)
     if self.state == "idle" and self._tilemap:isInsideMap(math.floor((self._y + self._tileheight ) / self._tilemap:getTileHeight()), self:_getCurrentRow()) then
       self.state = "moving"
 
-      Timer.tween(0.5, self, {_x = self._x, _y = self._y + self._tileheight}, "linear", function ()
+      Timer.tween(tweenTime, self, {_x = self._x, _y = self._y + self._tileheight}, tweenMethod, function ()
         self.state = "idle"
       end)
 
@@ -105,7 +107,7 @@ function Player:move (dir)
     if self.state == "idle" and self._tilemap:isInsideMap(self:_getCurrentCollumn(), math.floor((self._x + self._tilewidth) / self._tilemap:getTileWidth())) then
       self.state = "moving"
 
-      Timer.tween(0.5, self, {_x = self._x + self._tilewidth, _y = self._y}, "linear", function ()
+      Timer.tween(tweenTime, self, {_x = self._x + self._tilewidth, _y = self._y}, tweenMethod, function ()
         self.state = "idle"
       end)
 
@@ -114,7 +116,7 @@ function Player:move (dir)
     if self.state == "idle" and self._tilemap:isInsideMap(self:_getCurrentCollumn(), math.floor((self._x - self._tilewidth) / self._tilemap:getTileWidth())) then
       self.state = "moving"
 
-      Timer.tween(0.5, self, {_x = self._x - self._tilewidth, _y = self._y}, "linear", function ()
+      Timer.tween(tweenTime, self, {_x = self._x - self._tilewidth, _y = self._y}, tweenMethod, function ()
         self.state = "idle"
       end)
     end
