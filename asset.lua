@@ -14,4 +14,6 @@ assets.hud = {
 
 }
 
+assets.player = love.graphics.newImage("res/placeHolderPlayer.png")
+
 return assets

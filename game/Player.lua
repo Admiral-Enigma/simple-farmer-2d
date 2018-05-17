@@ -2,7 +2,7 @@ local Player = {}
 Player.__index = Player
 local tileTools = require "utils.TileTools"
 local Picker = require "game.Picker"
-local tweenMethod = "out-quad"
+local tweenMethod = "linear"
 local tweenTime = 0.5
 
 function Player:new(tilemap, cropmanager)
@@ -124,7 +124,9 @@ function Player:move (dir)
 end
 
 function Player:draw ()
-  drawFillTile(self:_getCurrentCollumn(), self:_getCurrentRow(), self._tilemap:getTileWidth(), self._tilemap:getTileHeight())
+  drawOutlineTile(self:_getCurrentCollumn(), self:_getCurrentRow(), self._tilemap:getTileWidth(), self._tilemap:getTileHeight(), rgba(99,199,77,255))
+  love.graphics.setColor(rgb(255,255,255))
+  love.graphics.draw(Assets.player, self._x, self._y, 0, 1, 1, 0, 32)
 end
 
 function Player:_getCurrentRow ()
