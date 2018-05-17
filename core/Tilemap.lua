@@ -18,6 +18,8 @@ function Tilemap:returnTileAtcollumnRow(collumn, row)
     if self:isInsideMap(collumn, row) then
       local index = self:_row_collumn_to_array_index(collumn, row)
       return self._tile_data[index]
+    else
+      return "Out of bounds"
     end
 end
 

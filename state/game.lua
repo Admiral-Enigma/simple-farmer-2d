@@ -32,6 +32,7 @@ function gameState:init()
 end
 
 function gameState:update(dt)
+  Timer.update(dt)
   player:update(dt)
   cropManager:update(dt)
   camera:lookAt(player:getX(), player:getY())
