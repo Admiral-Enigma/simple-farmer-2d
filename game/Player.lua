@@ -15,7 +15,7 @@ function Player:new(tilemap, cropmanager)
   ins._picker = Picker:new(tilemap, cropmanager)
   ins._cropmanager = cropmanager or {}
   ins.state = "idle"
-
+  ins.dir = 1
   ins._currentTool = 1
   return ins
 end
@@ -32,12 +32,13 @@ function Player:update(dt)
 
   if love.keyboard.isDown("d") then
     self:move("east")
+    self.dir = -1
 
   end
 
   if love.keyboard.isDown("a") then
     self:move("west")
-
+    self.dir = 1
   end
 
   if love.keyboard.isDown("f") then
@@ -126,7 +127,11 @@ end
 function Player:draw ()
   drawOutlineTile(self:_getCurrentCollumn(), self:_getCurrentRow(), self._tilemap:getTileWidth(), self._tilemap:getTileHeight(), rgba(99,199,77,255))
   love.graphics.setColor(rgb(255,255,255))
-  love.graphics.draw(Assets.player, self._x, self._y, 0, 1, 1, 0, 32)
+  if self.dir == 1 then
+    love.graphics.draw(Assets.player, self._x, self._y, 0, self.dir, 1, 0, 32)
+  else
+    love.graphics.draw(Assets.player, self._x, self._y, 0, self.dir, 1, 32, 32)
+  end
 end
 
 function Player:_getCurrentRow ()

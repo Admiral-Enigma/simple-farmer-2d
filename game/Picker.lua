@@ -44,7 +44,6 @@ end
 
 function Picker:setX (x)
   self._x = x
-  print(x)
 end
 
 function Picker:setY (y)
