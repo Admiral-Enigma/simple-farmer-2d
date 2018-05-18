@@ -1,8 +1,8 @@
 # Stuff to add before public itch.io release
 - Zoom - Done
-- Harvest Crops
+- Harvest Crops - Done
 - Sell Crops
-- Refactor the SaveEngine
+- Refactor the SaveEngine - Nah
 
 # The Barn
 - Houses items(crops, seed and other stuff)
