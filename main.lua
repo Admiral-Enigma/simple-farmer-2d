@@ -2,6 +2,7 @@ local StateManager = require "core.StateManager"
 Color = require "utils.Color"
 Signal = require 'core.lib.hump.signal'
 Timer = require "core.lib.hump.timer"
+Globals = require "globals"
 local SaveEngine = require "core.SaveEngine"
 local Crop = require "game.crops.Crop"
 local Barn = require "game.item.Barn"

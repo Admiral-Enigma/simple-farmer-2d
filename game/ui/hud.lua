@@ -15,6 +15,7 @@ function Hud:draw ()
   love.graphics.print("Tiletype: "..self._picker._tilemap:returnTileAtcollumnRow(self._picker:_getCurrentCollumn(), self._picker:_getCurrentRow()), 10, 60)
   love.graphics.print("Tool: "..self._picker:getCurrentTool(), 10, 100)
   love.graphics.print("FPS: "..tostring(love.timer.getFPS()), 10, 140)
+  love.graphics.print("Version: "..Globals.version, 10, 180)
   local toolY = love.graphics.getHeight() - 150
   love.graphics.draw(Assets.hud[self._picker:getCurrentTool()], 10, toolY, 0, 4, 4)
 end
